@@ -55,20 +55,6 @@ Everything from [k1sul1/k1kit](https://github.com/k1sul1/k1kit) and a few cherri
 - `<title>` is prefixed with the current environment to avoid confusion when working with multiple instances
 - Namespaces (believe it or not, these are rare in the WordPress world)
 
-## Setup
-
-Edit `config.json` to match your WordPress setup. Arguably not very hard. Run `npm install`.
-
-To run webpack-dev-server (WDS), run `npm run dev`. If you want to separate the build processes for admin and frontend, use `npm run dev:client` and `npm run dev:admin` instead. The advantage of that is that build errors do not get buried.
-
-To create a production build, run `npm run build`.
-
-In webpack-dev-server, CSS should update automatically without reloading, as should any module.hot compatible code. React should work out of the box.
-
-It is not possible to use the admin through the WDS proxy due to CORS reasons. Things like the editor will not work. So make a habit of ensuring you're using the admin directly and not through the WDS that runs in the background.
-
-**Remember to look a the README files buried in other folders of the theme! They might help!**
-
 ## Issues?
 
 Always.
