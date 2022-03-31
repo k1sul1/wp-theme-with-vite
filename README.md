@@ -35,6 +35,10 @@ In reality, I'd suggest that you just take the relevant parts from these files:
 
 The header contents are crucial for Vite to work properly.
 
+_If you're insane enough to use this and k1kit in production, at least lock the version of k1kit into whatever version is the latest release. I might update it any time, and I will not be responsible for breaking your site._
+
+_You have been warned._
+
 ## Features
 
 Everything from [k1sul1/k1kit](https://github.com/k1sul1/k1kit) and a few cherries on top. See it for more detailed description.
