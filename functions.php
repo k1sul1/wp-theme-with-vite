@@ -50,6 +50,25 @@ function debug($data) {
   echo "</pre>";
 }
 
+
+function injectViteIfDev() {
+  $app = app();
+
+  if ($app->manifests['vite']->isDev()) { ?>
+    <script type="module" src="http://localhost:8888/@vite/client"></script>
+    <script type="module">
+      import RefreshRuntime from 'http://localhost:8888/@react-refresh'
+      RefreshRuntime.injectIntoGlobalHook(window)
+      window.$RefreshReg$ = () => {}
+      window.$RefreshSig$ = () => (type) => type
+      window.__vite_plugin_react_preamble_installed__ = true
+    </script><?php
+  }
+}
+
+add_action('admin_head', '\k1\injectViteIfDev');
+add_action('wp_head', '\k1\injectViteIfDev');
+
 /**
  * Pass useful data to the frontend, instead of crawling these from the DOM.
  * Path can be used for dynamic imports, and wpurl for making HTTP requests,

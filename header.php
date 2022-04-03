@@ -16,20 +16,12 @@ $app = app();
     <meta name="viewport" content="initial-scale=1">
 
     <?php
-    if ($app->manifests['vite']->isDev()) { ?>
-    <!--  Bad idea -->
-    <!-- <base href="http://localhost:8888"> -->
-    <script type="module" src="http://localhost:8888/@vite/client"></script>
-    <script type="module">
-      import RefreshRuntime from 'http://localhost:8888/@react-refresh'
-      RefreshRuntime.injectIntoGlobalHook(window)
-      window.$RefreshReg$ = () => {}
-      window.$RefreshSig$ = () => (type) => type
-      window.__vite_plugin_react_preamble_installed__ = true
-    </script>
-    <?php
-    } ?>
+    if ($app->manifests['vite']->isDev()) {
+      // If you need something special in devmode,
+      // place it here.
 
+      // Vite-stuff is injected into wp_head in functions.php.
+    } ?>
 
     <?php wp_head(); ?>
   </head>
