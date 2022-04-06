@@ -29,7 +29,6 @@ However, if you end up using this repository as a template for your own work, **
 In reality, I'd suggest that you just take the relevant parts from these files:
 
 - classes/class.vite.php
-- header.php
 - functions.php
 - vite.config.ts
 
@@ -59,14 +58,14 @@ Everything from [k1sul1/k1kit](https://github.com/k1sul1/k1kit) and a few cherri
 
 Always.
 
-### Things don't look 100% right in the admin editor!
+## Vite dev server keeps refreshing my page!
 
-Let me tell you a story. You are building a complex & fragile, but beautiful thing. You make sure it works in all the ways it could be used by the users. Then someone runs over it with a truck.
+AFAIK the dev server client refreshes the page when it can't use HMR. If you find that annoying, like I do, use `npm run dev:nohmr`.
 
-That's what WordPress did and is doing. It bleeds styles and HTML into the editor, making our HTML not our HTML anymore, and our CSS unrealiable. It breaks colours, backgrounds and spacings.
+There doesn't seem to be working workarounds for this issue and Vite lacks a config option to disable forced reloads.
 
-Unsetting all core styles or recreating our styles so they work inside the editor which bleeds styles into the elements we create is not viable. It works well enough most of the time.
-The content can be edited, and a working preview of the page being edited can be viewed by using the Preview link in the editor itself.
+Throwing in vite:beforeFullReload as showcased in this issue doesn't work for me.
+https://github.com/vitejs/vite/issues/6695
 
 ## Self-Help section
 

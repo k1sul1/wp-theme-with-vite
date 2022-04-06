@@ -111,6 +111,19 @@ class Vite {
     return $handle;
   }
 
+  public function maybeEnqueueCSS(ViteAsset $asset, array $handles = []) {
+    if ($asset->css && !$this->isDev()) {
+      $files = $asset->css;
+
+      foreach ($files as $i => $css) {
+        $cssFile = $this->withBuildDirectory($css);
+        $handles[] = $this->enqueueCSS($cssFile);
+      }
+    }
+
+    return $handles;
+  }
+
   public function enqueue(string $assetName, $dependencies = [], $options = []) {
     $isJS = $this->isJS($assetName);
     $asset = $this->getAsset($assetName);
@@ -122,20 +135,21 @@ class Vite {
     }
 
     $filename = $this->getAssetFilename($asset);
+    $imports = $asset->imports;
     $handles = [];
 
     if ($isJS) {
       $handles[] = $this->enqueueJS($filename, $dependencies, true);
     }
 
-    if ($asset->css && !$this->isDev()) {
-      $files = $asset->css;
+    foreach ($imports as $import) {
+      $subAsset = $this->getAsset($import);
 
-      foreach ($files as $i => $css) {
-        $cssFile = $this->withBuildDirectory($css);
-        $handles[] = $this->enqueueCSS($cssFile);
-      }
+      $handles = $this->maybeEnqueueCSS($subAsset, $handles);
     }
+
+
+    $handles = $this->maybeEnqueueCSS($asset, $handles);
 
     return $handles;
   }

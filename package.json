@@ -4,7 +4,9 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "dev:nohmr": "vite build --watch",
+    "build": "vite build",
+    "tsc": "tsc",
     "preview": "vite preview"
   },
   "dependencies": {
